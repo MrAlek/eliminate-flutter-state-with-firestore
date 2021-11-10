@@ -89,7 +89,7 @@ class _ComposerState extends State<Composer> {
 void _sendNewMessage(String text) {
   FirebaseFirestore.instance.collection('chatMessages').add({
     'body': text,
-    'createdTime': FieldValue.serverTimestamp(),
+    'createTime': FieldValue.serverTimestamp(),
     'sender': 'me',
   });
 }
