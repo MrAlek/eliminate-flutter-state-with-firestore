@@ -17,7 +17,10 @@ class ChatPage extends StatelessWidget {
         children: [
           Expanded(
             child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-              stream: FirebaseFirestore.instance.collection('chatMessages').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('chatMessages')
+                  .orderBy('createTime', descending: true)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState != ConnectionState.active) {
                   return const CupertinoActivityIndicator();
