@@ -23,6 +23,7 @@ class _TextComposerState extends State<TextComposer> {
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 6),
         child: TextField(
           controller: _textController,
+          textCapitalization: TextCapitalization.sentences,
           autofocus: true,
           textInputAction: TextInputAction.send,
           onSubmitted: (text) {
