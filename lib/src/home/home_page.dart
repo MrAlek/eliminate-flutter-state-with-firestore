@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firestore_fun/src/bankid/bank_id_page.dart';
 import 'package:flutter_firestore_fun/src/chat/chat_page.dart';
 import 'package:flutter_firestore_fun/src/events/events_page.dart';
-import 'sample_item.dart';
+import 'home_item.dart';
 
-/// Displays a list of SampleItems.
-class SampleItemListView extends StatelessWidget {
-  const SampleItemListView({
+class HomePage extends StatelessWidget {
+  const HomePage({
     Key? key,
     this.items = const [
-      ListItem('Trivial Chat', ChatPage.routeName),
-      ListItem('Reactive BankID', BankIDPage.routeName),
-      ListItem('Events editor', EventsPage.routeName),
+      HomeItem('Trivial Chat', ChatPage.routeName),
+      HomeItem('Reactive BankID', BankIDPage.routeName),
+      HomeItem('Events editor', EventsPage.routeName),
     ],
   }) : super(key: key);
 
   static const routeName = '/';
 
-  final List<ListItem> items;
+  final List<HomeItem> items;
 
   @override
   Widget build(BuildContext context) {
