@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +22,20 @@ class ChatPage extends StatelessWidget {
             child: ChatMessagesList(),
           ),
           SafeArea(
-            child: TextComposer(),
+            child: TextComposer(
+              onSubmitted: _sendNewMessage,
+            ),
           ),
         ],
       ),
     );
   }
+}
+
+Future<void> _sendNewMessage(String? text) async {
+  await FirebaseFirestore.instance.collection('chatMessages').add({
+    'body': text,
+    'createTime': FieldValue.serverTimestamp(),
+    'sender': 'me',
+  });
 }

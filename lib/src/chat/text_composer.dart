@@ -1,8 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class TextComposer extends StatefulWidget {
-  const TextComposer({Key? key}) : super(key: key);
+  const TextComposer({
+    Key? key,
+    required this.onSubmitted,
+  }) : super(key: key);
+
+  final Function(String?) onSubmitted;
 
   @override
   _TextComposerState createState() => _TextComposerState();
@@ -22,7 +26,7 @@ class _TextComposerState extends State<TextComposer> {
           autofocus: true,
           textInputAction: TextInputAction.send,
           onSubmitted: (text) {
-            _sendNewMessage(text);
+            widget.onSubmitted(text);
             _textController.clear();
           },
         ),
@@ -35,12 +39,4 @@ class _TextComposerState extends State<TextComposer> {
     _textController.dispose();
     super.dispose();
   }
-}
-
-Future<void> _sendNewMessage(String text) async {
-  await FirebaseFirestore.instance.collection('chatMessages').add({
-    'body': text,
-    'createTime': FieldValue.serverTimestamp(),
-    'sender': 'me',
-  });
 }
