@@ -16,14 +16,14 @@ class EventEditor extends StatelessWidget {
         title: const Text('Edit event'),
         leadingWidth: 80,
         leading: TextButton(
-          child: const Text('Cancel', style: TextStyle(color: Colors.white)),
+          child: const Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop(false);
           },
         ),
         actions: [
           TextButton(
-            child: const Text('Save', style: TextStyle(color: Colors.white)),
+            child: const Text('Save'),
             onPressed: () {
               Navigator.of(context).pop(true);
             },
@@ -40,29 +40,42 @@ class EventEditor extends StatelessWidget {
             return const SizedBox();
           }
 
-          final event = snapshot.data!;
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                TextFormField(
-                  initialValue: event.get('title'),
-                  onFieldSubmitted: (title) {
-                    eventReference.update({'title': title});
-                  },
-                ),
-                InputDatePickerFormField(
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime.now().add(const Duration(days: 1000)),
-                  initialDate: (event.get('date') as Timestamp).toDate(),
-                  onDateSubmitted: (date) {
-                    eventReference.update({'date': Timestamp.fromDate(date)});
-                  },
-                ),
-              ],
-            ),
-          );
+          return _EventForm(event: snapshot.data!);
         },
+      ),
+    );
+  }
+}
+
+class _EventForm extends StatelessWidget {
+  const _EventForm({
+    Key? key,
+    required this.event,
+  }) : super(key: key);
+
+  final DocumentSnapshot<Map<String, dynamic>> event;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          TextFormField(
+            initialValue: event.get('title'),
+            onFieldSubmitted: (title) {
+              event.reference.update({'title': title});
+            },
+          ),
+          InputDatePickerFormField(
+            firstDate: DateTime.now().add(const Duration(days: -1000)),
+            lastDate: DateTime.now().add(const Duration(days: 1000)),
+            initialDate: (event.get('date') as Timestamp).toDate(),
+            onDateSubmitted: (date) {
+              event.reference.update({'date': Timestamp.fromDate(date)});
+            },
+          ),
+        ],
       ),
     );
   }

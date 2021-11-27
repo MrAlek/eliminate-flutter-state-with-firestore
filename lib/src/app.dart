@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
           color: Color(0xFFf7cb51),
           systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
+        textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(primary: Colors.white)),
       ),
       onGenerateRoute: (RouteSettings routeSettings) {
         return MaterialPageRoute<void>(
