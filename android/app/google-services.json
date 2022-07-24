@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "987405069214",
+    "project_id": "flutter-fun-4baa7",
+    "storage_bucket": "flutter-fun-4baa7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987405069214:android:df7f1cb40ef2a6ddf0848f",
+        "android_client_info": {
+          "package_name": "se.alek.flutterFirestoreFun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987405069214-h2ovcfao61bv4ao4hnur8db3buepvfum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALxkGyBfPQpAMcVUs8W6BeRkkZQxNyoF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987405069214-h2ovcfao61bv4ao4hnur8db3buepvfum.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "987405069214-tm6j9enjvvd2d817fc473jj0o282t3sd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "se.alek.flutterFirestoreFun"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

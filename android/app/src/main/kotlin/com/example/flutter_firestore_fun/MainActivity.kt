@@ -1,4 +1,4 @@
-package com.example.flutter_firestore_fun
+package se.alek.flutterFirestoreFun
 
 import io.flutter.embedding.android.FlutterActivity
 
